@@ -70,3 +70,17 @@ form.addEventListener('submit', function (e) {
 // "form" usually gets submitted via 2 types, i.e by GET type or POST type, whenever it gets submitted it's values goes to the URL or to the Server, we have to stop it, the default action
 
 ```
+
+## project 3 solution code
+
+```javascript
+const clock = document.getElementById('clock');
+
+setInterval(function (){
+  let date = new Date();
+  //console.log(date.toLocaleTimeString());
+  clock.innerHTML = date.toLocaleTimeString();
+
+}, 1000);
+
+```
