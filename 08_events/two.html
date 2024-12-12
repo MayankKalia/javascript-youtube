@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur code</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = "Best JS Series"
+    } 
+
+    const changeMe = setTimeout(changeText, 2000);
+
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(changeMe)
+        console.log("STOPPED");
+        
+    })
+</script>
+</html>
+
+
+<!--  setTimeout() - it's a method , it also calls an API which is an interesting aspect of it
+
+methods like these, we get via Browser, not part of core JS  
+
+setTimeout() runs only Once
+setInterval() keeps running after Set Interval
+
+sometimes you see some popup coming after sometime on the website
+
+clearTimeout()  - this is used to stop the timeout
+
+In methods like above, there is ONE HANDLER and ONE TIMEOUT
+-->
