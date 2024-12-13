@@ -182,3 +182,54 @@ function newGame() {
 }
 
 ```
+
+# Project 5 solution
+
+```javascript
+const insert = document.getElementById('insert')
+
+window.addEventListener('keydown', function(e){
+  insert.innerHTML = `
+  
+  <table>
+  <tr>
+    <th>Key</th>
+    <th>Keycode</th>
+    <th>Code</th>
+  </tr>
+  <tr>
+    <td>${e.key === ' ' ? 'Space' : e.key}</td>
+    <td>${e.keyCode}</td>
+    <td>${e.code}</td>
+  </tr>
+</table>
+  
+  `
+})
+
+```
+
+# Project 6 solution 
+
+```javscript
+let intervalId;
+const getRandomColor = function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+document.querySelector('#start').addEventListener('click', function () {
+  intervalId = setInterval(function () {
+    document.body.style.backgroundColor = getRandomColor();
+  }, 1000);
+});
+
+document.querySelector('#stop').addEventListener('click', function () {
+  clearInterval(intervalId);
+});
+
+```
