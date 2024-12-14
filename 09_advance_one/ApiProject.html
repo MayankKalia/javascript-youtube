@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Card</title>
+    <style>
+        #card {
+            display: none; /* Initially hide the card */
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        #card img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 15px;
+        }
+        #card h3 {
+            margin: 10px 0 0;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button id="fetchButton">Fetch GitHub User</button>
+    <div id="card">
+        <img id="userPhoto" src="" alt="User Photo">
+        <h3 id="followerCount"></h3>
+    </div>
+
+    <script>
+        const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+        const button = document.getElementById('fetchButton');
+        const card = document.getElementById('card');
+        const userPhoto = document.getElementById('userPhoto');
+        const followerCount = document.getElementById('followerCount');
+
+        button.addEventListener('click', function () {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', requestUrl);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const data = JSON.parse(this.responseText);
+                    // Update the card
+                    userPhoto.src = data.avatar_url;
+                    followerCount.textContent = `Followers: ${data.followers}`;
+                    card.style.display = 'block'; // Show the card
+                }
+            };
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
