@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+    class React {
+        constructor(){
+            this.library = "React"
+            this.server = "https://localhost:300"
+
+            //requirement
+            document
+                .querySelector('button')
+                .addEventListener('click', this.handleClick.bind(this))
+
+        }
+        handleClick(){
+            console.log("button clicked");
+            console.log(this.server);
+        }
+    }
+
+    const app = new React()
+</script>
+</html>
+
+<!--   When the button's click event triggers, the handleClick function is executed in the context of the button element because the event listener sets the this value to the element that fired the event (in this case, the <button>). Since this inside handleClick refers to the button, and the button does not have a handleClick method or server property, it results in undefined.
+
+To ensure this refers to the class instance (React), we explicitly bind this to the class context using .bind(this) when adding the event listener.  -->
