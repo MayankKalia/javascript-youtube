@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure aur chai</title>
+</head>
+<body style="background-color: #313131;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+
+    <script>
+        //LEXICAL SCOPING SHOWN IN BELOW CODE
+    // function init() {
+    //     let name = "Mozilla"; 
+    //     function displayName() {
+    //         console.log(name); 
+    //     }
+    //     displayName();
+    // }
+    // init();
+
+        // In case of simple Fxn cration, you can't access it's variables outside fxn due to it's functional scope but if you have a function inside fxn then the inner fxn can access the variables OR Scope of it's parent fxn, this concept is called LEXICAL SCOPING 
+    
+    // function outer(){
+    //     let username = "hitesh"
+    //     console.log("OUTER", secret);
+    //     function inner(){
+    //         let secret = "my123"
+    //         console.log("inner", username);
+    //     }
+    //     function innerTwo(){
+    //         console.log("innerTwo", username);
+    //         console.log(secret);
+    //     }
+    //     inner()
+    //     innerTwo()
+
+    // }
+    // outer()
+    // console.log("TOO OUTER", username);
+
+    // Closure- when you return a fxn, it's not the fxn that only returns but it's complete LEXICAL SCOPE that returns, below code is an eg. of Closure 
+
+    // function makeFunc() {
+    //     const name = "Mozilla";
+    //     function displayName() {
+    //         console.log(name);
+    //     }
+    //     return displayName;
+    // }
+
+    // const myFunc = makeFunc();
+    // myFunc();
+
+    </script>
+    <script>
+        // document.getElementById("orange").onclick = function(){
+        //     document.body.style.backgroundColor = `orange`
+        // }
+        // document.getElementById("green").onclick = function(){
+        //     document.body.style.backgroundColor = `green`
+        // }
+
+        //Below Example is the real world scenario of "Closures"
+
+        function clickHandler(color){
+            // document.body.style.backgroundColor = `${color}`
+
+            return function(){
+                document.body.style.backgroundColor = `${color}`
+            }
+        }
+
+        document.getElementById('orange').onclick = clickHandler("orange")
+        document.getElementById('green').onclick = clickHandler("green")
+
+    </script>
+</html>
